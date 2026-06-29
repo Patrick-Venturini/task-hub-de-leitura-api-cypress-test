@@ -26,29 +26,44 @@
 
 Cypress.Commands.add('geraToken', (email, senha) => {
     cy.request({
-        method: 'POST', 
-        url: 'login', 
+        method: 'POST',
+        url: 'login',
         body: {
             email: email,
             password: senha
         }
     }).then((response) => {
-       expect(response.status).to.equal(200) 
-       return response.body.token
+        expect(response.status).to.equal(200)
+        return response.body.token
     })
- })
+})
 
- Cypress.Commands.add('cadastrarUsuario', (nome, email, senha) =>{
-        cy.api({
-            method: 'POST',
-            url: 'users',
-            body: {
-                "name": nome,
-                "email": email,
-                "password": senha
-            }
-        }).then(response => {
-            expect(response.status).to.equal(201)
-            return response.body.user.id
-        })
- })
+Cypress.Commands.add('cadastrarUsuario', (nome, email, senha) => {
+    cy.api({
+        method: 'POST',
+        url: 'users',
+        body: {
+            "name": nome,
+            "email": email,
+            "password": senha
+        }
+    }).then(response => {
+        expect(response.status).to.equal(201)
+        return response.body.user.id
+    })
+})
+
+Cypress.Commands.add('cadastrarLivro', (title, author, token) => {
+    cy.api({
+        method: 'POST',
+        url: 'books',
+        headers: { 'Authorization': token },
+        body: {
+            title: title,
+            author: author
+        }
+    }).then(response => {
+        expect(response.status).to.equal(201)
+        return response.body.book.id
+    })
+})
