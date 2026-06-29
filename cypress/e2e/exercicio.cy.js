@@ -129,7 +129,7 @@ describe('Testes da Funcionalidade Catálogo de Livros', () => {
 
      // Objetivo: Validar que um livro pode ser removido do catálogo
      // Verificar que apenas admin pode deletar livros (validação de permissão)
-     it.only('DELETE - Deve deletar um livro previamente cadastrado', () => {
+     it('DELETE - Deve deletar um livro previamente cadastrado', () => {
           let title = faker.book.title()
           let author = faker.book.author()
 
