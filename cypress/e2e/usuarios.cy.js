@@ -1,5 +1,7 @@
 /// <reference types="cypress"/>
 
+const { faker } = require("@faker-js/faker");
+
 let token
 beforeEach(() => {
     cy.geraToken('admin@biblioteca.com', 'admin123').then(tkn => {
@@ -150,7 +152,8 @@ describe('DELETE - Teste de API - Gestão de Usuários', () => {
     });
 
     it('Deve excluir um usuário com sucesso - De forma dinâmica', () => {
-        cy.cadastrarUsuario('Fabio para deletar', 'email@deletar.com', 'senha123').then(userId => {
+        let email = `deletar${Date.now()}@email.com`
+        cy.cadastrarUsuario('Fabio para deletar', email, 'senha123').then(userId => {
             cy.api({
                 method: 'DELETE',
                 url: `users/${userId}`,
