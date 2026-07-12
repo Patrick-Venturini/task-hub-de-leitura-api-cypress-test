@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx cypress run"
+    "test": "npx cypress run --browser chrome"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-    "cypress": "^15.9.0",
+    "cypress": "^15.18.0",
     "cypress-plugin-api": "^2.11.2"
   },
   "devDependencies": {
