@@ -153,7 +153,7 @@ describe('DELETE - Teste de API - Gestão de Usuários', () => {
 
     it('Deve excluir um usuário com sucesso - De forma dinâmica', () => {
         let email = `deletar${Date.now()}@email.com`
-        cy.cadastrarUsuario('Fabio para deletar', email, 'senha123').then(userId => {
+        cy.cadastrarUsuario('Fabio para deletar', 'senha123').then(userId => {
             cy.api({
                 method: 'DELETE',
                 url: `users/${userId}`,
